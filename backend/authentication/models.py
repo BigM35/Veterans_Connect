@@ -8,7 +8,7 @@ class User(AbstractUser):
         ('USA', 'U.S. Army'),
         ('USN', 'U.S. Navy'),
         ('USAF', 'U.S. Air Force'),
-        ('USCG', 'U.S. Army'),
+        ('USCG', 'U.S. Coast Guard'),
         ('Other', 'Other Service')
     ]
 
@@ -27,12 +27,6 @@ class User(AbstractUser):
         ('RES', 'Reserve'),
         ('VET', 'Veteran')
     ]
-
-    mos: models.CharField(max_length=50)
-    current_status = models.CharField(max_length=10, choices=statuses)
-    branch = models.CharField(max_length=5, choices=branches,blank=True)
-    grade = models.CharField(max_length=2, choices=grades)
-    rank = models.CharField(max_length=50, blank=True)
 
     # branch_ranks = [
     #     ('Enlisted', (
@@ -85,15 +79,42 @@ class User(AbstractUser):
     
     
 
-
-
-
     # def determainRankTitle(self):
     #     if self.branch == 'USMC':
-    #         if self.grade == "E1":
-    #             self.rank = 
-                
+    #         if self.grade == "Enlisted":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_enlisted_ranks,default=self.usmc_enlisted_ranks.pvt)
+    #         elif self.grade == "Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_usa_usaf_officer_ranks, default=self.usmc_usa_usaf_officer_ranks)
+    #         elif self.grade == "Warrant Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_usn_coast_guard_warrant_officer_ranks,default=self.usmc_usn_coast_guard_warrant_officer_ranks.WO1)
+    #     elif self.branch == "USA":
+    #         if self.grade == "Enlisted":
+    #             self.rank = models.CharField(max_length=50, choices=self.usa_enlisted_ranks,default=self.usa_enlisted_ranks.PV1)
+    #         elif self.grade == "Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_usa_usaf_officer_ranks, default=self.usmc_usa_usaf_officer_ranks)
+    #         elif self.grade == "Warrant Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usa_warrant_officer_ranks,default=self.usa_warrant_officer_ranks.WO1)        
+    #     elif self.branch == 'USN' or self.branch == "USCG":
+    #         if self.grade == "Enlisted":
+    #             self.rank = models.CharField(max_length=50, choices=self.usn_coast_guard_enlisted_ranks,default=self.usn_coast_guard_enlisted_ranks.SR)
+    #         elif self.grade == "Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usn_coast_guard_officer_ranks, default=self.usn_coast_guard_officer_ranks)
+    #         elif self.grade == "Warrant Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_usn_coast_guard_warrant_officer_ranks,default=self.usmc_usn_coast_guard_warrant_officer_ranks.WO1)
+    #     elif self.branch == "USAF":
+    #         if self.grade == "Enlisted":
+    #             self.rank = models.CharField(max_length=50, choices=self.usaf_enlisted_ranks,default=self.usaf_enlisted_ranks.AB)
+    #         elif self.grade == "Officer":
+    #             self.rank = models.CharField(max_length=50, choices=self.usmc_usa_usaf_officer_ranks, default=self.usmc_usa_usaf_officer_ranks)
+    #     else:
+    #         self.rank = models.CharField(max_length=2, default="N/A")
 
+    mos: models.CharField(max_length=50)
+    current_status = models.CharField(max_length=10, choices=statuses)
+    branch = models.CharField(max_length=5, choices=branches,blank=True)
+    grade = models.CharField(max_length=2, choices=grades)
+    rank = models.CharField(max_length=50,blank=True, null=True)
+    friends = models.ForeignKey(self.User, max_length=50,blank=True)
     # pass
     '''
     This is a custom version of the built in User class

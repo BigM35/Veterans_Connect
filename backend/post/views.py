@@ -1,3 +1,4 @@
+from urllib import response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -10,12 +11,17 @@ from .serializers import PostSerializer
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def add_Post(request):
-    serializer = PostSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save(user=request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+def add_post(request):
+    if request.method == "POST":
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "GET":
+        post = Post.objects.all()
+        serializer = PostSerializer(post, many=True)
+        return response(serializer.data, status=status.HTTP_200_OK)
    
 
 @api_view(['PUT'])

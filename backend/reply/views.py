@@ -16,7 +16,7 @@ from post.models import Post
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def user_reply(request, pk):
+def user_replies(request, pk):
     reply = Reply.objects.filter(pk=pk).first()
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -31,4 +31,11 @@ def user_reply(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
    
 
-# Create your views her
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_reply(request, pk):
+        replies = Reply.objects.get(pk = pk)
+        serializer = ReplySerializer(replies, data = request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
