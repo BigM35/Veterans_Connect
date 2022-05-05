@@ -1,11 +1,8 @@
-from sre_constants import BRANCH
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone
-from status.models import MilitaryStatus
-from tkinter import CASCADE
 
-class User(AbstractUser):
+
+class User(AbstractUser): 
     branches = [
         ('USMC', 'U.S. Marine Corps'),
         ('USA', 'U.S. Army'),
@@ -31,6 +28,11 @@ class User(AbstractUser):
         ('VET', 'Veteran')
     ]
 
+    mos: models.CharField(max_length=50)
+    current_status = models.CharField(max_length=10, choices=statuses)
+    branch = models.CharField(max_length=5, choices=branches,blank=True)
+    grade = models.CharField(max_length=2, choices=grades)
+    rank = models.CharField(max_length=50, blank=True)
 
     # branch_ranks = [
     #     ('Enlisted', (
@@ -84,12 +86,7 @@ class User(AbstractUser):
     
 
 
-    mos: models.CharField(max_length=50)
-    current_status: models.CharField(max_length=10, choices=statuses)
-    start_date: models.DateTimeField(default=timezone.now)
-    branch: models.CharField(max_length=5, choices=branches)
-    grade: models.CharField(max_length=2, choices=grades)
-    rank: models.CharField(max_length=50, blank=True)
+
 
     # def determainRankTitle(self):
     #     if self.branch == 'USMC':
