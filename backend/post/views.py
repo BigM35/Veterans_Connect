@@ -19,9 +19,9 @@ def add_post(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "GET":
-        post = Post.objects.all()
-        serializer = PostSerializer(post, many=True)
-        return response(serializer.data, status=status.HTTP_200_OK)
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
    
 
 @api_view(['PUT'])
@@ -34,3 +34,13 @@ def update_post(request, pk):
             return Response(serializer.data, status=status.HTTP_200_OK)
  
 # Create your views here.
+
+@api_view(['GET'])
+@permission_classes({IsAuthenticated})
+def get_friend_posts(request):
+    # get user off request
+    friends = request.user.friends.all()
+    vis = [item for item in friends]
+    friend_posts = Post.objects.filter(user__in=friends)
+    serializer = PostSerializer(friend_posts, many=True)
+    return Response(serializer.data)

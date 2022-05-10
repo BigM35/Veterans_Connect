@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -31,3 +32,8 @@ def user_cars(request):
         cars = Car.objects.filter(user_id=request.user.id)
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def single_car(request, id):
+    car = get_object_or_404(Car, pk=id)
+    car.hello()

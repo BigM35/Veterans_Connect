@@ -30,8 +30,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
         model = User
         # If added new columns through the User model, add them in the fields
         # list as seen below
+        
         fields = ('username', 'password', 'email',
-                  'first_name', 'last_name',)
+                  'first_name', 'last_name', 'current_status', 
+                  'branch', 'grade', 'rank', 'friends')
 
     def create(self, validated_data):
 
@@ -40,6 +42,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
+            current_status=validated_data['current_status'],
+            branch=validated_data['branch'],
+            grade=validated_data['grade'],
+            rank=validated_data['rank'],
+            friends=validated_data['friends']
 
             # If added new columns through the User model, add them in this
             # create method. Example below:
@@ -50,3 +57,21 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class FriendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "date_joined", "last_login", "current_status", "branch", "grade", "rank"]
+
+
+class FriendsListSerializer(serializers.ModelSerializer):
+    friends = FriendSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ['friends']
+        depth = 1
+
+
+
+
+           

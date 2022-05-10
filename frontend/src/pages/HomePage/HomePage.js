@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import Feed from "../../components/Feed/Feed";
 import axios from "axios";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
+        let response = await axios.get("http://127.0.0.1:8000/cars/", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -26,9 +26,11 @@ const HomePage = () => {
     };
     fetchCars();
   }, [token]);
+  
   return (
+    <>
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
+      <h1>Home Page for {user.username}!</h1> 
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
@@ -36,6 +38,10 @@ const HomePage = () => {
           </p>
         ))}
     </div>
+    <div>
+      {user ? <Feed /> : null}
+    </div>
+   </>
   );
 };
 
