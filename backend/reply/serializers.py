@@ -12,5 +12,5 @@ class ReplySerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False, read_only=True)
     class Meta:
         model = Reply
-        fields = ['id', 'user', 'post', 'text']
+        fields = ['id', 'user', 'post', 'text', 'likes', 'dislikes']
         depth=1
