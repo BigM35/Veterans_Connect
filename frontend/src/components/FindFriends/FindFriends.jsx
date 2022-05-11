@@ -1,6 +1,6 @@
 import { useState, useSyncExternalStore } from "react";
 
-
+import DisplaySearchedResults from "../DisplaySearchedResults/DisplaySearchedResults";
 
 
 const FindFriends = (props) => {
@@ -13,7 +13,7 @@ const FindFriends = (props) => {
     };
     
     return ( 
-        <form>
+       
             <>
                 <div>
                     <form onSubmit={handleSubmit}>
@@ -21,9 +21,7 @@ const FindFriends = (props) => {
                     <button type='submit'>Search</button> 
                     </form>
                 </div>
-            </>
-        </form>
-        
+            </>     
      );
 }
  

@@ -6,6 +6,7 @@ import "./NavBar.css";
 import useAuth from "../../hooks/useAuth";
 import { useState, React, useEffect } from "react";
 import axios from "axios";
+import DisplaySearchedResults from "../DisplaySearchedResults/DisplaySearchedResults";
 
 const Navbar = () => {
 
@@ -13,7 +14,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [user, token] = useAuth()
   const [users, setUsers] = useState([]);
-
+  const [filteredUsers, setFilteredUsers] = useState([])
 
 
   async function getAllUsers() {
@@ -23,6 +24,7 @@ const Navbar = () => {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(response.data)
       setUsers(response.data);
     }catch(err){
       console.log(`Error: ${err}`);
@@ -31,15 +33,15 @@ const Navbar = () => {
   
   useEffect(() => {
   getAllUsers();
-  }, []);
+  }, [user]);
 
   const findUser = (searched) => {
-    let foundUsers = users.filter(user => user.first_name.toLowerCase().includes(searched.toLowerCase()) 
-    || user.last_name.toLowerCase().includes(searched.toLowerCase()) || user.branch.toLowerCase().includes(searched.toLowerCase()) 
-    || user.mos.toLowerCase().includes(searched.toLowerCase()) || user.status.toLowerCase().includes(searched.toLowerCase()))
-    console.log(foundUsers)
+    let foundUsers = users.filter(user => {
+      return user.username.toLowerCase().includes(searched.toLowerCase())  
+  })
+    console.log(`Filtered Users: ${foundUsers}`)
     setUsers(foundUsers)
-    console.log(users)
+    
   }
   return (
     <div className="navBar">
@@ -49,6 +51,7 @@ const Navbar = () => {
             <b>React/Django JWT</b>
           </Link>
         </li>
+     
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
@@ -57,10 +60,12 @@ const Navbar = () => {
           )}
         </li>
         <li>
-          <FindFriends friendFinder={findUser} />
+          {user ? <FindFriends friendFinder={findUser} /> : null}
         </li>
       </ul>
+      {user ? <DisplaySearchedResults /> : null}
     </div>
+    
   );
 };
 

@@ -9,6 +9,8 @@ import DisplayFeed from "../DisplayFeed/DisplayFeed";
 const Feed = (props) => {
     
     const [posts, setPosts] = useState([]);
+    const [replies, setReplies] = useState([]);
+    const [viewReplies, setViewReplies] = useState(false)
     const [user, token] = useAuth()
     
     
@@ -44,11 +46,29 @@ const Feed = (props) => {
         }
     }
     
+    
+
+    async function handleReplies(post){
+        let response = await axios.get('http://127.0.0.1:8000/auth/replies/'+ post + '/', {
+            headers:{
+                Authorization: "Bearer " + token
+            }
+        });
+        setReplies(response.data);
+        if (viewReplies == false){
+            setViewReplies(true)
+        }else{
+            setViewReplies(false)
+        }
+    }
+    
+    
+    
 
     return ( 
         <>
         <NewPost submitNewPost={makeNewPost} />
-        <DisplayFeed post={posts} />
+        <DisplayFeed post={posts} replies={replies} viewReplies={viewReplies} handleReplies={handleReplies} />
         </>
         
    
