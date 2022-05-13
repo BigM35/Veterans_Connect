@@ -1,3 +1,6 @@
+from distutils.command.upload import upload
+from email.policy import default
+from operator import truediv
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -110,12 +113,12 @@ class User(AbstractUser):
             self.rank = models.CharField(max_length=2, default="N/A")
 
     
-
-    mos: models.CharField(max_length=50)
-    current_status = models.CharField(max_length=10, choices=statuses)
-    branch = models.CharField(max_length=5, choices=branches,blank=True)
-    grade = models.CharField(max_length=2, choices=grades)
-    rank = models.CharField(max_length=50,blank=True, null=True)
+    profile_pic     = models.ImageField(upload_to='images', default='images/default.jpeg')
+    mos             = models.CharField(max_length=50,null=True)
+    current_status  = models.CharField(max_length=10, choices=statuses)
+    branch          = models.CharField(max_length=5, choices=branches,blank=True)
+    grade           = models.CharField(max_length=2, choices=grades)
+    rank            = models.CharField(max_length=50,blank=True, null=True)
     friends = models.ManyToManyField("self",  blank=True, related_name="reciver")
     
 
