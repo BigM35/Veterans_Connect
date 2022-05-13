@@ -5,44 +5,16 @@ import FindFriends from "../FindFriends/FindFriends";
 import "./NavBar.css";
 import useAuth from "../../hooks/useAuth";
 import { useState, React, useEffect } from "react";
-import axios from "axios";
-import DisplaySearchedResults from "../DisplaySearchedResults/DisplaySearchedResults";
 
-const Navbar = () => {
+
+const Navbar = (props) => {
 
   const { logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [user, token] = useAuth()
-  const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([])
-
-
-  async function getAllUsers() {
-    try{
-      let response = await axios.get("http://127.0.0.1:8000/auth/finder/", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      console.log(response.data)
-      setUsers(response.data);
-    }catch(err){
-      console.log(`Error: ${err}`);
-    }
-  }
   
-  useEffect(() => {
-  getAllUsers();
-  }, [user]);
-
-  const findUser = (searched) => {
-    let foundUsers = users.filter(user => {
-      return user.username.toLowerCase().includes(searched.toLowerCase())  
-  })
-    console.log(`Filtered Users: ${foundUsers}`)
-    setUsers(foundUsers)
     
-  }
+  
   return (
     <div className="navBar">
       <ul>
@@ -60,10 +32,10 @@ const Navbar = () => {
           )}
         </li>
         <li>
-          {user ? <FindFriends friendFinder={findUser} /> : null}
+          {user ? <FindFriends friendFinder={props.friendFinder} filteredUsers={props.filteredUsers} /> : null}
+
         </li>
       </ul>
-      {user ? <DisplaySearchedResults /> : null}
     </div>
     
   );

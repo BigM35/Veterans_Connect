@@ -18,6 +18,7 @@ const PostReply = (props) => {
                             <td>{reply.text }</td>
                             <td>{reply.like}</td>
                             <td>{reply.dislike}</td>
+                            <input></input>
                         </tr>
                     </tbody>
                 </table>
