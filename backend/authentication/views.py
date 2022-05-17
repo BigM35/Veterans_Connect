@@ -41,13 +41,17 @@ def find_user(request, id):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 # add path for this function
-@api_view(['POST'])
+@api_view(['POST', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def add_friend(request, new_friend_id):
-    # find the user profile of the person being friended
-    new_friend = User.objects.get(pk=new_friend_id)
-    # add user to friends list
-    request.user.friends.add(new_friend)
-    # save user
-    request.user.save()
-    return Response(status=status.HTTP_200_OK)
+def friend_request(request, id):
+    friend = get_object_or_404(User, pk=id)
+    if request.method == 'POST':
+        request.user.friends.add(id)
+        request.user.save()
+        return Response(status=status.HTTP_200_OK)
+    elif request.method == 'DELETE':
+        request.user.friends.remove(id)
+        friend.friends.remove(request.user.id)
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+
