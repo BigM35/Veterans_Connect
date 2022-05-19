@@ -23,10 +23,13 @@ function App() {
 
   const [posts, setPosts] = useState([]);
   const [replies, setReplies] = useState([]);
-  const [viewReplies, setViewReplies] = useState(false)
   const [user, token] = useAuth()
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([])
+  const [showReplies, setShowReplies] = useState(false)
+  const [postId, setPostId] = useState('')
+
+
 
 
   async function getAllUsers() {
@@ -94,11 +97,13 @@ function App() {
                 Authorization: "Bearer " + token
             }
         });
+        console.log(response.data)
         setReplies(response.data);
-        if (viewReplies == false){
-            setViewReplies(true)
+        setPostId(post)
+        if(showReplies){
+          setShowReplies(false)
         }else{
-            setViewReplies(false)
+          setShowReplies(true)
         }
     }
     
@@ -111,7 +116,8 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage post={posts} replies={replies} viewReplies={viewReplies} handleReplies={handleReplies} makeNewPost={makeNewPost} />
+              <HomePage post={posts} replies={replies}  handleReplies={handleReplies} makeNewPost={makeNewPost} 
+              showReplies={showReplies} postId={postId}/>
             </PrivateRoute>
           }
         />

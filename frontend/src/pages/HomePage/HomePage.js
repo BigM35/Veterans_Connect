@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Feed from "../../components/Feed/Feed";
 import axios from "axios";
+import PostReply from "../../components/PostReply/PostReply";
+import NewPost from "../../components/NewPost/NewPost";
 
 const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -30,7 +32,7 @@ const HomePage = (props) => {
   return (
     <>
     <div className="container">
-      <h1>Home Page for {user.username}!</h1> 
+      <h1>Welcome {user.first_name}!</h1> 
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
@@ -39,7 +41,9 @@ const HomePage = (props) => {
         ))}
     </div>
     <div>
-      {user ? <Feed post={props.post} replies={props.replies} viewReplies={props.viewReplies} handleReplies={props.handleReplies} makeNewPost={props.makeNewPost} /> : null}
+      {user ? <NewPost submitNewPost={props.makeNewPost} /> : null}
+      {user ? <Feed post={props.post} replies={props.replies}   handleReplies={props.handleReplies}  reply={props.reply}
+       showReplies={props.showReplies} postId={props.postId}/>  : null}
     </div>
    </>
   );
