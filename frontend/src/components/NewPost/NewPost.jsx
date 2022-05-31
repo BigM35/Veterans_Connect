@@ -17,8 +17,8 @@ const NewPost = (props) => {
     }
     
     return ( 
-        <form onSubmit={handleSubmit}>
-            <input value={text} type="string" onChange={(event) => setText(event.target.value)}></input>
+        <form onSubmit={handleSubmit} className="form">
+            <textarea className="textarea" cols={60} value={text} type="string" onChange={(event) => setText(event.target.value)} placeholder="What's on your mind?"></textarea>
             <button type="submit" >Post</button>
         </form>
      );

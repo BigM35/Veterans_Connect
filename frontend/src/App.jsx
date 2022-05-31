@@ -52,7 +52,9 @@ function App() {
 
   const findUser = (searched) => {
     let foundUsers = users.filter(user => {
-      return user.username.toLowerCase().includes(searched.toLowerCase())  
+      return user.username.toLowerCase().includes(searched.toLowerCase()) || user.first_name.toLowerCase().includes(searched.toLowerCase()) || 
+      user.last_name.toLowerCase().includes(searched.toLowerCase()) || user.rank.toLowerCase().includes(searched.toLowerCase()) || user.branch.toLowerCase().includes(searched.toLowerCase())
+         
   })
     console.log('Filtered Users: ', foundUsers)
     setFilteredUsers(foundUsers)
@@ -109,7 +111,7 @@ function App() {
     
 
   return (
-    <div>
+    <div className="container">
       <Navbar friendFinder={findUser} filteredUsers={filteredUsers}/>
       <Routes>
         <Route

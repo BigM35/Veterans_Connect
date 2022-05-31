@@ -1,0 +1,42 @@
+
+
+
+
+.profile-container{
+    display: flex;
+    border-radius: 1em;
+    flex-direction: column;
+    width: 500px;
+    max-width: 600px;
+    justify-content: center;
+    
+   
+
+}
+
+.user-info{
+    background-color: darkolivegreen;
+    margin: .25em;
+    padding: 1em;
+    border-radius: .5em;
+    box-shadow: 5px 3px 5px rgb(52, 66, 25);
+}
+
+
+.user-friends{
+    background-color: darkolivegreen;
+    justify-content: space-between;
+    margin: .25em;
+    padding: 1em;
+    border-radius: .5em;
+    box-shadow: 5px 3px 5px rgb(52, 66, 25);
+    flex-direction: row;
+    overflow: scroll;
+}
+
+.friends{
+    margin: 1em;
+    box-shadow: 5px 3px 5px rgb(52, 66, 25);
+    width: auto;
+}
+

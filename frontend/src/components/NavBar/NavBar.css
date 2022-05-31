@@ -9,23 +9,25 @@ li {
 }
 
 .navBar {
-  background: steelblue;
-  box-shadow: 4px 2px 5px gray;
-  color: white;
+  background: darkolivegreen; 
+  box-shadow: 5px 3px 5px rgb(52, 66, 25); 
+  color: black;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
+  border-radius: .2em;
+  
 }
 
 .navBar button {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 0px solid black;
+  color: black;
   padding: 0.4rem 0.5rem;
+  border-radius: 1em;
 }
 
 .navBar button:hover {
-  background: white;
-  color: steelblue;
+  color: rgb(36, 53, 5);
   cursor: pointer;
 }
 
@@ -33,3 +35,11 @@ li {
   cursor: pointer;
   font-size: 2rem;
 }
+
+.logox{
+  border-radius: 3em;
+}
+ .brand:hover{
+   color: black;
+   
+ }

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
-
+import './RegisterPage.css'
 
 const RegisterPage = () => {
   const [branch, setBranch] = useState('')
@@ -12,8 +12,8 @@ const RegisterPage = () => {
     username: "",
     email: "",
     password: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     mos: "",
     currently_status: "",
     branch: "",
@@ -27,13 +27,13 @@ const RegisterPage = () => {
   
   function populate(){
     
-    rank.innerHTML = "";
+  
     let opt = [];
 
     if (branch === 'USMC'){
       if (grade === "Enlisted"){
-        opt = [" | ", 'Pvt' | 'Private', 'PFC'| 'Private First Class', 'LCpl' | 'Lance Corporal', 'Cpl' | 'Corporal',  'Sgt' | 'Sergeant', 'SSgt' | 'Staff Sergeant',
-        'GySgt' | 'Gunnery Sergeant',  'MSgt' | 'Master Sergeant',  '1Sgt' | 'First Sergeant', 'MGySgt' | 'Master Gunnery Sergeant',  'SgtMaj' | 'Sergeant Major'
+        opt = ["  ", ('Pvt', 'Private'), ('PFC', 'Private First Class'), ('LCpl', 'Lance Corporal'), ('Cpl' , 'Corporal'),  ('Sgt' , 'Sergeant'), ('SSgt' , 'Staff Sergeant'),
+        ('GySgt' , 'Gunnery Sergeant'),  ('MSgt' , 'Master Sergeant'),  ('1Sgt' , 'First Sergeant'), ('MGySgt' , 'Master Gunnery Sergeant'),  ('SgtMaj' , 'Sergeant Major')
       ]
       
       }else if(grade == "Officer"){
@@ -76,7 +76,7 @@ const RegisterPage = () => {
            ('Commodore', '	Rear Admiral, Commodore'),  ('Rear Admiral', 'Rear Admiral, Upper Half'),  ('Vice Admiral', ' Vice Admiral'), ('Admiral', 'Chief of Naval Operations Commandant of the Coast Guard Admiral')
       ]      }
       else if (grade == "Warrant Officer"){
-        opt = [" | " ('WO1', 'Warrant Officer 1'), ('CWO2', ' Chief Warrant Officer 2'), ('CWO3', 'Chief Warrant Officer 3'), ('CWO4', 'Chief Warrant Officer 4'),  ('CWO5', 'Chief Warrant Officer 5')
+        opt = [" " ('WO1', 'Warrant Officer 1'), ('CWO2', ' Chief Warrant Officer 2'), ('CWO3', 'Chief Warrant Officer 3'), ('CWO4', 'Chief Warrant Officer 4'),  ('CWO5', 'Chief Warrant Officer 5')
       ]      
       }
     }else if (branch == "USAF"){
@@ -90,13 +90,8 @@ const RegisterPage = () => {
       }
       
     }
-    for(let option in opt){
-      let pair = opt[option].split(' | ');
-      let newOption = document.createElement(option)
-      newOption.value = pair[0];
-      newOption.innerHTML = pair[1];
-      rank.options.add(newOption)
-    }
+    let options = opt.map(el => <option>{el}</option>)
+    return options
   }  
  
   
@@ -165,23 +160,26 @@ const RegisterPage = () => {
         </label>
       
          Military Branch (USMC/USA/USN/USAF/USCG): {" "}
-          <select value={branch} className="branch" onChange={() => setBranch(this.state.value)}>
+          <select value={branch} className="branch" onChange={(e) => setBranch(e.target.value)}>
             <option value={''}></option>
-            <option value={'USMC'}></option>
-            <option value={'USA'}></option>
-            <option value={'USN'}></option>
-            <option value={'USAF'}></option>
-            <option value={'USCG'}></option>
+            <option value={'USMC'}>USMC</option>
+            <option value={'USA'}>USA</option>
+            <option value={'USN'}>USN</option>
+            <option value={'USAF'}>USAF</option>
+            <option value={'USCG'}>USCG</option>
           </select>
           Grade (Officer/Warrent Officer/Enlisted): {" "}
-          <select value={this.state.value} className="grade">
+          <select value={grade} className="grade" onChange={(e) => setGrade(e.target.value)}>
             <option value={''}> </option>
             <option value={'Officer'}>Officer</option>
-            <option value={'Warrent Officer'}>Warrent Officer</option>
+            <option value={'Warrant Officer'}>Warrant Officer</option>
             <option value={'Enlisted'}>Enlisted</option>
           </select>
           Rank: {" "}
-          <select itemID="rank" className="rank" ></select>
+
+          <select itemID="rank" className="rank" >
+            {branch !=""  && grade != "" ?populate() :<option>Select above</option> }
+          </select>
         
         <button>Register!</button>
       </form>

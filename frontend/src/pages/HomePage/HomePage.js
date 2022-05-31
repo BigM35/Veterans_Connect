@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Feed from "../../components/Feed/Feed";
 import axios from "axios";
-import PostReply from "../../components/PostReply/PostReply";
 import NewPost from "../../components/NewPost/NewPost";
-
+import "./HomePage.css"
 const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
@@ -31,19 +30,13 @@ const HomePage = (props) => {
   
   return (
     <>
-    <div className="container">
-      <h1>Welcome {user.first_name}!</h1> 
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.make} {car.model}
-          </p>
-        ))}
-    </div>
     <div>
+      <h1 className="title">Welcome {user.first_name}!</h1> 
       {user ? <NewPost submitNewPost={props.makeNewPost} /> : null}
       {user ? <Feed post={props.post} replies={props.replies}   handleReplies={props.handleReplies}  reply={props.reply}
        showReplies={props.showReplies} postId={props.postId}/>  : null}
+    </div>
+    <div>
     </div>
    </>
   );

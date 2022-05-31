@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import DisplaySearchedResults from "../DisplaySearchedResults/DisplaySearchedResults";
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/esm/Button';
+import './FindFriends.css'
 
 
 
@@ -36,11 +36,11 @@ const FindFriends = (props) => {
                     <button type='submit'>Search</button> 
                     </form>
                 </div>
-                <div>
+                <div className='flexbox-container' >
                     
-                    <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+                    <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)} className="flexbox-container">
                         <Modal.Header closeButton>
-                        <Modal.Title>Modal</Modal.Title>
+                        <Modal.Title>Finder</Modal.Title>
                         </Modal.Header>
                         <Modal.Body><DisplaySearchedResults filteredUsers={props.filteredUsers} setShow={setShow}/> </Modal.Body>
                     </Modal>

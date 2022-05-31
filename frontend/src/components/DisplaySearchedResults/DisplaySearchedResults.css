@@ -5,4 +5,11 @@
 
 button.link { 
     background:none; border:none; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-drop{
+    background-color: darkolivegreen;
 }

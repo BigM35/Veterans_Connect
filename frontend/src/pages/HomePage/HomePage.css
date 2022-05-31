@@ -1,0 +1,9 @@
+
+
+.title {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    text-transform: uppercase;
+    color: darkolivegreen;
+}
