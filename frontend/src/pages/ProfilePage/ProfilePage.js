@@ -119,22 +119,24 @@ const ProfilePage = () => {
     return ( 
         <Fragment >
             <div className='profile-container'>
-                <div className='user-info'>
+
+                <p className='user-info'>
                     <h1>{userData.rank +' '+ userData.last_name + ', ' + userData.first_name}</h1>
-                    {console.log(userData.profile_pic)}
-                    <img src={userData.profile_pic} ></img>
+                    {console.log('http://127.0.0.1:8000'+userData.profile_pic)}
+                    <img src={'http://127.0.0.1:8000'+userData.profile_pic} className='profilePic'></img>
                     <h4>{'Status: '+ userData.current_status +', Branch: '+ userData.branch + ', MOS: ' + userData.mos}</h4>
                     {!isUser ? (!isFriend ? <button onClick={() => addFriend(userId)} >Add Friend</button> : <button onClick={() => removeFriend(userId)}>Remove Friend</button>) : null}
-                </div>
+                </p>
             
                 <div className='user-friends'>
                 Friends:
                     {userFriendsData.length > 0 ? userFriendsData[0].friends.map(friend => {
                         return(
-                            <div className='friends'>
-                                <img src={friend.profile_pic} />
+                            <p className='friends'>
+                                <img src={'http://127.0.0.1:8000'+friend.profile_pic} className="friendsPic" />
+                                {console.log('Friends pic: ','http://127.0.0.1:8000'+friend.profile_pic)}
                                 <p>{friend.rank +' '+ friend.last_name + ', ' + friend.first_name}</p>
-                            </div>
+                            </p>
 
                         )
                     }) : null}

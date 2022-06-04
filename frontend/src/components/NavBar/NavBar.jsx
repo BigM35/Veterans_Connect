@@ -16,15 +16,15 @@ const Navbar = (props) => {
     
   
   return (
-    <div className="navBar">
-      <ul>
+    
+      <ul className="navBar">
         <li>
         <img src='https://media.istockphoto.com/photos/bald-eagle-flying-with-american-flag-picture-id973753508?s=612x612' height={100} width={100} className='logox' />
         </li>
         <li className="brand">
           
           <Link to="/" style={{ textDecoration: "none", color: "darkgray" }}>
-            <b>Veterans Connect</b>
+            <b><p>Veterans . . . . . </p> <p>           . . . . . Connect</p></b>
           </Link>
         </li>
         
@@ -41,7 +41,7 @@ const Navbar = (props) => {
 
         </li>
       </ul>
-    </div>
+    
     
   );
 };

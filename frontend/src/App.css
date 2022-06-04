@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+
 }
 
 html {
@@ -18,13 +19,15 @@ p {
 }
 
 button {
-  background-color: transparent;
-  border: 0px;
+  background-color: darkolivegreen;
+  border: .5px;
   color: darkgray;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
   padding: 0.5rem 0.5rem;
+  border-radius: 2em;
+  justify-content: flex-end;
   
 }
 
@@ -39,8 +42,9 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    
+    background: url(https://i.imgur.com/SCMwjHn.jpg);
+    background-attachment: fixed;
+    background-color: darkolivegreen;
     
 }
 
@@ -67,3 +71,28 @@ button:hover {
   
 }
 
+
+h6{
+  background-color: transparent;
+}
+h4{
+  background-color: darkolivegreen;
+}
+h5{
+  background-color: darkolivegreen;
+}
+p{
+  background-color: darkolivegreen;
+}
+b{
+  background-color: darkolivegreen;
+}
+ul{
+  background-color: darkolivegreen;
+}
+Table{
+  background-color: darkolivegreen;
+}
+div{
+  background-color: black;
+}

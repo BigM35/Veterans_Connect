@@ -1,42 +1,45 @@
 
-
-
-
-.profile-container{
-    display: flex;
-    border-radius: 1em;
-    flex-direction: column;
-    width: 500px;
-    max-width: 600px;
-    justify-content: center;
-    
-   
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
 }
 
 .user-info{
     background-color: darkolivegreen;
     margin: .25em;
-    padding: 1em;
-    border-radius: .5em;
+    padding: 1.5rem 2rem;
+    border-radius: .2em;
     box-shadow: 5px 3px 5px rgb(52, 66, 25);
+    flex-grow: 1;
 }
 
 
 .user-friends{
     background-color: darkolivegreen;
-    justify-content: space-between;
+    justify-content: center;
     margin: .25em;
-    padding: 1em;
-    border-radius: .5em;
+    padding: 1.5rem 2rem;
+    border-radius: .2em;
     box-shadow: 5px 3px 5px rgb(52, 66, 25);
-    flex-direction: row;
+    flex-wrap: wrap;
     overflow: scroll;
 }
 
 .friends{
     margin: 1em;
-    box-shadow: 5px 3px 5px rgb(52, 66, 25);
-    width: auto;
+    flex-wrap: wrap;
+    
 }
 
+.profilePic{
+    border-radius: 10em;
+    height: 200px;
+    width: 200px;
+}
+.friendsPic{
+    border-radius: 10em;
+    height: 2rem;
+    width: 2rem;
+}

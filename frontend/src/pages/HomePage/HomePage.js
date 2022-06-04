@@ -30,14 +30,10 @@ const HomePage = (props) => {
   
   return (
     <>
-    <div>
       <h1 className="title">Welcome {user.first_name}!</h1> 
       {user ? <NewPost submitNewPost={props.makeNewPost} /> : null}
       {user ? <Feed post={props.post} replies={props.replies}   handleReplies={props.handleReplies}  reply={props.reply}
        showReplies={props.showReplies} postId={props.postId}/>  : null}
-    </div>
-    <div>
-    </div>
    </>
   );
 };

@@ -10,27 +10,30 @@ const Feed = (props) => {
 
     return ( 
         < Fragment >
-            <div className='flexbox-continer' >
+            <h6 className='flexbox-continer' >
                 {props.post.map((eachPost, index) => {
                     return (
-                        <div key={index} className='flexbox-item-1' >
-                            {<img src={eachPost.user.profile_pic} ></img>}
-                            <h6>{eachPost.user.rank +' '+ eachPost.user.last_name + ' ' + eachPost.user.first_name} </h6>
-                            <h6>{eachPost.user.current_status +' '+ eachPost.user.branch}</h6>
-                            <p>{eachPost.text} <button> 👍 {eachPost.likes}</button></p>
-                            <button onClick={() => props.handleReplies(eachPost.id)}>Replies</button> 
+                        <h6 key={index} className='flexbox-item-1' >
+                            {<img src={'http://127.0.0.1:8000'+eachPost.user.profile_pic} className='pic' />}
+                            <h4>{eachPost.user.rank +' '+ eachPost.user.last_name + ' ' + eachPost.user.first_name} </h4>
+                            <h5>{eachPost.user.current_status +' '+ eachPost.user.branch}</h5>
+                            <p>{eachPost.text} </p>
+                            
+                                <button onClick={() => props.handleReplies(eachPost.id)}>Replies</button> 
+                            
+                                <button> 👍 {eachPost.likes}</button>
                             <div>
                                 <p>
-                                    {props.showReplies ? <PostReply replies={props.replies} showReplies={props.showReplies} /> : null}
+                                    {props.showReplies ? <PostReply replies={props.replies} showReplies={props.showReplies} postId={props.postId} /> : null}
                                 
                                 </p>    
 
                             </div>
                             
-                        </div>
+                        </h6>
                     )
                 })}
-            </div>
+            </h6>
         </Fragment>
         
    

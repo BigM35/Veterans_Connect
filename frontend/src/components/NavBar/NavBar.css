@@ -9,17 +9,16 @@ li {
 }
 
 .navBar {
-  background: darkolivegreen; 
   box-shadow: 5px 3px 5px rgb(52, 66, 25); 
-  color: black;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
   border-radius: .2em;
+  background-color: darkolivegreen;
   
 }
 
 .navBar button {
-  background: transparent;
+  background: darkolivegreen;
   border: 0px solid black;
   color: black;
   padding: 0.4rem 0.5rem;

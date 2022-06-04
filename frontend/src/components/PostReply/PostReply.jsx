@@ -38,10 +38,9 @@ const PostReply = (props) => {
                 <textarea value={text} type="string" onChange={(event) => setText(event.target.value)}></textarea>
                 <button type="submit" >Reply</button>
             </form> 
-                    {props.replies.map((reply) => {
+                    {props.replies.map((reply, index) => {
                         return(
-                            
-                            <div>
+                            <div key={index}>
                                 <h6>{reply.user.rank +' '+ reply.user.last_name + ', ' + reply.user.first_name}</h6>
                                 <h6>{reply.user.current_status +' '+ reply.user.branch}</h6>  
                                 <p>{reply.text + " " +reply.likes}</p>

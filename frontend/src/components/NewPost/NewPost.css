@@ -1,7 +1,26 @@
 
+.formm{
+    display: flex;
+    gap: 1rem;
+    background-color: transparent;
+    border-radius: .5em;
+    padding: 40px;
+    justify-content: center;
 
-
-.textarea{
-    border-radius: 2em;
-    height: auto;
 }
+
+.textareax  {
+    background-color: darkolivegreen;
+}
+
+
+.formm input {
+    display: block;
+    width: 100%;
+    height: 25px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
+    border-radius: .5em;
+    
+  }

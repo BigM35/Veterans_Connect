@@ -29,22 +29,21 @@ const FindFriends = (props) => {
     
     return ( 
             <>
-            
-                <div>
+                <h6>
                     <form onSubmit={handleSubmit}>
                     <input value={searchedString} onChange={(event) => setSearchedString(event.target.value)} type='text' placeholder='Find a personel'></input>
                     <button type='submit'>Search</button> 
                     </form>
-                </div>
-                <div className='flexbox-container' >
+                </h6>
+                <h6 className='flexbox-container' >
                     
                     <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)} className="flexbox-container">
-                        <Modal.Header closeButton>
-                        <Modal.Title>Finder</Modal.Title>
+                        <Modal.Header  closeButton>
+                        <Modal.Title style={{color:'darkolivegreen'}}>Finder</Modal.Title>
                         </Modal.Header>
                         <Modal.Body><DisplaySearchedResults filteredUsers={props.filteredUsers} setShow={setShow}/> </Modal.Body>
                     </Modal>
-                </div>
+                </h6>
             </>     
      );
 }

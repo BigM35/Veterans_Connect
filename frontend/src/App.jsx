@@ -111,7 +111,7 @@ function App() {
     
 
   return (
-    <div className="container">
+    <main className="container">
       <Navbar friendFinder={findUser} filteredUsers={filteredUsers}/>
       <Routes>
         <Route
@@ -128,7 +128,7 @@ function App() {
         <Route path="/profile/:userId" element={ <PrivateRoute> <ProfilePage /> </PrivateRoute> } />
       </Routes>
       {/* <Footer /> */}
-    </div>
+    </main>
 
   );
 }

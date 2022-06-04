@@ -1,18 +1,16 @@
-.flexbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    
-    
-}
+
 
 .flexbox-item-1{
-    width: 700px;
+    
     margin: 10px;
     background-color: darkolivegreen;
     border-radius: .5em;
     padding: 40px;
     box-shadow: 5px 3px 5px rgb(52, 66, 25);
+}
+
+.pic{
+    border-radius: 10em;
+    height: 75px;
+    width: 75px;
 }
