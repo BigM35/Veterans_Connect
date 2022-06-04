@@ -8,7 +8,7 @@ from authentication import images
 class User(AbstractUser): 
    
     
-    profile_pic     = models.ImageField(upload_to='images/', default='images/default.jpeg')
+    profile_pic     = models.ImageField(blank=True, null=True, upload_to='images/', default='/media/images/default.jpeg')
     mos             = models.CharField(max_length=50,null=True)
     current_status  = models.CharField(max_length=10)
     branch          = models.CharField(max_length=5, blank=True)

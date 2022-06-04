@@ -62,7 +62,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "first_name", "last_name", "date_joined", "last_login", "current_status", "branch", "grade", "rank"]
+        fields = ["id", "username", "profile_pic","first_name", "last_name", "date_joined", "last_login", "current_status", "branch", "grade", "rank"]
 
 
 class FriendsListSerializer(serializers.ModelSerializer):
