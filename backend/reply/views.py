@@ -17,12 +17,12 @@ from post.models import Post
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def user_replies(request, pk):
-    reply = Reply.objects.filter(pk=pk).first()
+    reply = Reply.objects.filter(pk=pk)
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
-        serializer = ReplySerializer(reply, data=request.data)
+        serializer = ReplySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(post = post,user= request.user)
+            serializer.save(post=post,user= request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':

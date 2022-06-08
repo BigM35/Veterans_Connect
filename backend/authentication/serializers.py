@@ -33,7 +33,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         
         fields = ('id', 'profile_pic', 'username', 'password', 'email',
                   'first_name', 'last_name', 'current_status', 
-                  'branch', 'grade', 'rank', 'friends')
+                  'branch', 'grade', 'rank', 'mos', 'friends')
 
     def create(self, validated_data):
 
@@ -47,7 +47,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
             branch=validated_data['branch'],
             grade=validated_data['grade'],
             rank=validated_data['rank'],
-            friends=validated_data['friends']
+            friends=validated_data['friends'],
+            mos=validated_data['mos']
 
             # If added new columns through the User model, add them in this
             # create method. Example below:
@@ -62,7 +63,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "profile_pic","first_name", "last_name", "date_joined", "last_login", "current_status", "branch", "grade", "rank"]
+        fields = ["id", "username", "profile_pic","first_name", "last_name", "date_joined", "last_login", "current_status", "branch", "grade", "rank", "mos"]
 
 
 class FriendsListSerializer(serializers.ModelSerializer):
