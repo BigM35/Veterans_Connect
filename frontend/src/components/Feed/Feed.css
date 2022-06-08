@@ -3,7 +3,7 @@
 .flexbox-item-1{
     
     margin: 10px;
-    background-color: darkolivegreen;
+    background: rgba(85, 107, 47, 0.8);
     border-radius: .5em;
     padding: 40px;
     box-shadow: 5px 3px 5px rgb(52, 66, 25);

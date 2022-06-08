@@ -19,7 +19,6 @@ p {
 }
 
 button {
-  background-color: darkolivegreen;
   border: .5px;
   color: darkgray;
   font-size: 1rem;
@@ -28,6 +27,8 @@ button {
   padding: 0.5rem 0.5rem;
   border-radius: 2em;
   justify-content: flex-end;
+  background: transparent;
+  
   
 }
 
@@ -39,13 +40,13 @@ button:hover {
 
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background: url(https://i.imgur.com/SCMwjHn.jpg);
     background-attachment: fixed;
     background-color: darkolivegreen;
-    
+    box-shadow: inset 0px 0px 20px 20px rgb(0, 0, 0);
+    height: 100%;
+    width: 100%;
+    flex-flow: column wrap;
 }
 
 .form {
@@ -54,10 +55,12 @@ button:hover {
   flex-direction: column;
   justify-content: flex-end;
   gap: 1rem;
-  background-color: darkolivegreen;
+  background-color: transparent;
   border-radius: .5em;
   padding: 40px;
+  background: rgba(85, 107, 47, 0.8);
   box-shadow: 5px 3px 5px rgb(52, 66, 25);
+  height: 100%;
 }
 
 .form input {
@@ -72,27 +75,7 @@ button:hover {
 }
 
 
-h6{
-  background-color: transparent;
-}
-h4{
-  background-color: darkolivegreen;
-}
-h5{
-  background-color: darkolivegreen;
-}
-p{
-  background-color: darkolivegreen;
-}
-b{
-  background-color: darkolivegreen;
-}
-ul{
-  background-color: darkolivegreen;
-}
-Table{
-  background-color: darkolivegreen;
-}
-div{
-  background-color: black;
+
+div {
+  background: black;
 }

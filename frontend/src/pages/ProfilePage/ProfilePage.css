@@ -7,29 +7,32 @@
 }
 
 .user-info{
-    background-color: darkolivegreen;
+   
     margin: .25em;
     padding: 1.5rem 2rem;
     border-radius: .2em;
-    box-shadow: 5px 3px 5px rgb(52, 66, 25);
+    box-shadow: 5px 3px 5px rgb(69, 87, 38, 0.8);
     flex-grow: 1;
+    background: rgba(85, 107, 47, 0.8);
+    align-items: center;
+    justify-content: center;
 }
 
 
 .user-friends{
-    background-color: darkolivegreen;
-    justify-content: center;
+
     margin: .25em;
     padding: 1.5rem 2rem;
     border-radius: .2em;
-    box-shadow: 5px 3px 5px rgb(52, 66, 25);
-    flex-wrap: wrap;
+    box-shadow: 5px 3px 5px rgb(69, 87, 38, 0.8);
     overflow: scroll;
+    background: rgba(85, 107, 47, 0.8);
 }
 
 .friends{
     margin: 1em;
     flex-wrap: wrap;
+    background: transparent;
     
 }
 
@@ -42,4 +45,6 @@
     border-radius: 10em;
     height: 2rem;
     width: 2rem;
+    
 }
+

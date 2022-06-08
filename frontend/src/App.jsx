@@ -28,6 +28,7 @@ function App() {
   const [filteredUsers, setFilteredUsers] = useState([])
   const [showReplies, setShowReplies] = useState(false)
   const [postId, setPostId] = useState('')
+  
 
 
 
@@ -91,7 +92,6 @@ function App() {
         }
     }
     
-    
 
     async function handleReplies(post){
         let response = await axios.get('http://127.0.0.1:8000/auth/replies/'+ post + '/', {
@@ -108,6 +108,7 @@ function App() {
           setShowReplies(true)
         }
     }
+
     
 
   return (
@@ -119,7 +120,7 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage post={posts} replies={replies}  handleReplies={handleReplies} makeNewPost={makeNewPost} 
-              showReplies={showReplies} postId={postId}/>
+              showReplies={showReplies} postId={postId} setReplies={setReplies}/>
             </PrivateRoute>
           }
         />
@@ -127,7 +128,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile/:userId" element={ <PrivateRoute> <ProfilePage /> </PrivateRoute> } />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </main>
 
   );

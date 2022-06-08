@@ -33,7 +33,7 @@ const HomePage = (props) => {
       <h1 className="title">Welcome {user.first_name}!</h1> 
       {user ? <NewPost submitNewPost={props.makeNewPost} /> : null}
       {user ? <Feed post={props.post} replies={props.replies}   handleReplies={props.handleReplies}  reply={props.reply}
-       showReplies={props.showReplies} postId={props.postId}/>  : null}
+       showReplies={props.showReplies} postId={props.postId} setReplies={props.setReplies}/>  : null}
    </>
   );
 };

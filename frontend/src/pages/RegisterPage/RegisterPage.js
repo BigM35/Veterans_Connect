@@ -6,6 +6,8 @@ import './RegisterPage.css'
 const RegisterPage = () => {
   const [branch, setBranch] = useState('')
   const [grade, setGrade] = useState('')
+  const [rank, setRank] = useState('')
+  const [status, setStatus] = useState('')
 
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
@@ -15,10 +17,10 @@ const RegisterPage = () => {
     first_name: "",
     last_name: "",
     mos: "",
-    currently_status: "",
-    branch: "",
-    grade: "",
-    rank: ""
+    currently_status: status,
+    branch: branch,
+    grade: grade,
+    rank: rank
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
@@ -158,6 +160,15 @@ const RegisterPage = () => {
             onChange={handleInputChange}
           />
         </label>
+        
+          Duty Status:{" "}
+          <select value={status} className="currently_status" onChange={(e) => setStatus(e.target.value)}>
+            <option value={''}>{''}</option>
+            <option value={'Active'}>Active</option>
+            <option value={'Reserve'}>Reserve</option>
+            <option value={'Veteran'}>Veteran</option>
+          </select>
+         
       
          Military Branch (USMC/USA/USN/USAF/USCG): {" "}
           <select value={branch} className="branch" onChange={(e) => setBranch(e.target.value)}>
@@ -177,7 +188,7 @@ const RegisterPage = () => {
           </select>
           Rank: {" "}
 
-          <select itemID="rank" className="rank" >
+          <select itemID="rank" className="rank" onChange={(e) => setRank(e.target.value)}>
             {branch !=""  && grade != "" ?populate() :<option>Select above</option> }
           </select>
         
